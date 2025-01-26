@@ -13,7 +13,7 @@ import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import useAxiosPublic from "../components/hooks/useAxiosPublic";
 
-export const AuthContext = createContext(null);
+export const AuthContext = createContext({});
 
 const AuthProvider = ({ children }) => {
   // const navigate = useNavigate();

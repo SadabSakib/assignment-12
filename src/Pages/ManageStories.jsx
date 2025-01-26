@@ -15,8 +15,7 @@ import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import useAxiosPublic from "../components/hooks/useAxiosPublic";
 import useAxiosSecure from "../components/hooks/useAxiosSecure";
-const axiosPublic = useAxiosPublic();
-// const axiosSecure = useAxiosSecure();
+
 
 const fetchStories = async () => {
   const { data } = await axiosPublic.get("/api/stories");
@@ -24,6 +23,8 @@ const fetchStories = async () => {
 };
 
 const ManageStories = () => {
+  const axiosPublic = useAxiosPublic();
+  const axiosSecure = useAxiosSecure();
   const {
     data: stories,
     error,
