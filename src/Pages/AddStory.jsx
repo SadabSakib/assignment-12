@@ -209,18 +209,20 @@ const navigate=useNavigate()
   const onSubmit = async (data) => {
     console.log("Visa Data:", data);
 
-    const imgFile = { image: data.imgFile[0] };
-    const res = await axiosPublic.post(img_hosting_api, imgFile, {
+    const imgFile = { image: data.images[0] };
+    const res = await axios.post(img_hosting_api, imgFile, {
       headers: {
         "content-type": "multipart/form-data",
       },
     });
     console.log(res.data);
+    
     if (res.data.success) {
       const storyData = {
         title: data.title,
         text: data.text,
-        images: res.data.images,
+        images: res.data.images?.url,
+        email: user?.email,
       };
       // // send data to the server and database
       fetch("http://localhost:5000/story", {

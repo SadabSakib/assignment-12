@@ -9,27 +9,30 @@
 // };
 
 // export default ManageStories;
-import React from "react";
+import React, { useContext } from "react";
 import { useQuery, useMutation, useQueryClient } from "@tanstack/react-query";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import useAxiosPublic from "../components/hooks/useAxiosPublic";
 import useAxiosSecure from "../components/hooks/useAxiosSecure";
-
-
-const fetchStories = async () => {
-  const { data } = await axiosPublic.get("/api/stories");
-  return data;
-};
+import { AuthContext } from "../provider/AuthProvider";
+import Swal from "sweetalert2";
 
 const ManageStories = () => {
+  const { user } = useContext(AuthContext);
+
   const axiosPublic = useAxiosPublic();
   const axiosSecure = useAxiosSecure();
+  const fetchStories = async () => {
+    const { data } = await axiosPublic.get(`/api/story/${user?.email}`);
+    console.log(data);
+    return data;
+  };
   const {
     data: stories,
     error,
     isLoading,
-  } = useQuery({ queryKey: "stories", queryfun: fetchStories });
+  } = useQuery({ queryKey: ["stories"], queryFn: fetchStories });
   const queryClient = useQueryClient();
   const navigate = useNavigate();
 
@@ -65,13 +68,13 @@ const ManageStories = () => {
 
   return (
     <div className="manage-stories">
-      {stories.map((story) => (
+      {stories?.map((story) => (
         <div key={story._id} className="card">
           <h3>{story.title}</h3>
           <p>{story.text}</p>
-          {story.images.map((image, idx) => (
+          {/* {story?.images?.map((image, idx) => (
             <img key={idx} src={image} alt={`Story ${idx}`} />
-          ))}
+          ))} */}
           <button onClick={() => navigate(`/edit-story/${story._id}`)}>
             Edit
           </button>
