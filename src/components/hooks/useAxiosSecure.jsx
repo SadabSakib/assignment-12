@@ -9,7 +9,7 @@ import { AuthContext } from "../../provider/AuthProvider";
 //   withCredentials: true,
 // });
 const axiosInstance = axios.create({
-  baseURL: "http://localhost:5000/",
+  baseURL: "https://assignment-12-server-beige-two.vercel.app/",
   withCredentials: true,
 });
 const useAxiosSecure = () => {

@@ -16,24 +16,24 @@
 //     email,
 //     description,
 //   } = visa;
-    // const handleDelete = (_id) => {
-    //   console.log(_id);
+// const handleDelete = (_id) => {
+//   console.log(_id);
 
-    //   fetch(`http://localhost:5000/visa/${_id}`, {
-    //     method: "DELETE",
-    //   })
-    //     .then((res) => res.json())
-    //     .then((data) => {
-    //       console.log(data);
-    //       if (data.deletedCount > 0) {
-    //         const remaining = visas.filter((visa) => visa._id !== _id);
-    //         setVisas(remaining);
-    //       }
-    //     })
-    //     .catch(err => {
-    //     console.log(err)
-    //   })
-    // };
+//   fetch(`https://assignment-12-server-beige-two.vercel.app/visa/${_id}`, {
+//     method: "DELETE",
+//   })
+//     .then((res) => res.json())
+//     .then((data) => {
+//       console.log(data);
+//       if (data.deletedCount > 0) {
+//         const remaining = visas.filter((visa) => visa._id !== _id);
+//         setVisas(remaining);
+//       }
+//     })
+//     .catch(err => {
+//     console.log(err)
+//   })
+// };
 //   return (
 //     <div className="card w-96 bg-base-100 shadow-xl">
 //       {" "}

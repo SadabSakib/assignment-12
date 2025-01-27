@@ -14,17 +14,16 @@ const AllUsers = () => {
       return res.data;
     },
   });
-console.log(users)
+  console.log(users);
   const handleMakeAdmin = (user) => {
-    axiosSecure.patch(`users/admin/${user._id}`)
-      .then(() => {
-        Swal.fire(`${user.displayName} is admin now`);
-        refetch()
-    })
+    axiosSecure.patch(`users/admin/${user._id}`).then(() => {
+      Swal.fire(`${user.displayName} is admin now`);
+      refetch();
+    });
   };
   const handleUserDelete = (id) => {
     //   delete user from the mongodb database
-    // fetch(`http://localhost:5000/users/${id}`, {
+    // fetch(`https://assignment-12-server-beige-two.vercel.app/users/${id}`, {
     //   method: "DELETE",
     // })
     //   .then((res) => res.json())
@@ -82,9 +81,13 @@ console.log(users)
                 {user?.displayName}
               </td>
               <td className="border border-gray-300 px-4 py-2">
-                {user.role==='admin'? 'Admin':<button onClick={() => handleMakeAdmin(user)}>
-                  <p>User</p>
-                </button>}
+                {user.role === "admin" ? (
+                  "Admin"
+                ) : (
+                  <button onClick={() => handleMakeAdmin(user)}>
+                    <p>User</p>
+                  </button>
+                )}
               </td>
 
               <td className="border border-gray-300 px-4 py-2">{user.email}</td>

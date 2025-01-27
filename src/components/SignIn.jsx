@@ -6,8 +6,6 @@ import { auth } from "../Firebase/Firebase.init";
 import axios from "axios";
 import useAxiosPublic from "./hooks/useAxiosPublic";
 
-
-
 const SignIn = () => {
   const {
     user,
@@ -42,7 +40,7 @@ const SignIn = () => {
           navigate("/");
         });
         //  const email = { email: user?.email };
-        // axios.post("http://localhost:5000/jwt", email, {
+        // axios.post("https://assignment-12-server-beige-two.vercel.app/jwt", email, {
         //    withCredentials:true
         //  }).then((data) => {
         //    console.log(data);
@@ -69,14 +67,14 @@ const SignIn = () => {
         // axios part for token generating
         const user = { email: email };
         axios
-          .post("http://localhost:5000/jwt", user, {
+          .post("https://assignment-12-server-beige-two.vercel.app/jwt", user, {
             withCredentials: true,
           })
           .then((res) => {
             console.log(res);
           });
 
-        fetch(`http://localhost:5000/users`, {
+        fetch(`https://assignment-12-server-beige-two.vercel.app/users`, {
           method: "PATCH",
           headers: {
             "content-type": "application/json",

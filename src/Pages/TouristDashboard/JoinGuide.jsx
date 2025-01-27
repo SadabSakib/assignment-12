@@ -1,15 +1,28 @@
 import React, { useState } from "react";
 import { useForm } from "react-hook-form";
 import { Modal } from "react-daisyui";
+import useAxiosSecure from "../../components/hooks/useAxiosSecure";
 
 const JoinGuide = () => {
   const { register, handleSubmit, reset } = useForm();
   const [isModalOpen, setIsModalOpen] = useState(false);
 
   const onSubmit = (data) => {
+    const axiosSecure = useAxiosSecure();
+    const JoinGuide = {
+      tile: data.title,
+      reason: data.reason,
+      cvLink: data.cvLink,
+      email: data.email,
+    };
+    axiosSecure.post("/reqToJoinGuide", JoinGuide);
+    
+    
     // Handle form submission, send data to the server
     console.log("Form Data:", data);
+
     setIsModalOpen(true); // Show success modal
+
     reset(); // Reset form
   };
 

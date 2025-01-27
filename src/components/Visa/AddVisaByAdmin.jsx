@@ -35,10 +35,10 @@ const AddVisaByAdmin = () => {
   });
 
   const axiosPublic = useAxiosPublic();
-const axiosSecure=useAxiosSecure()
+  const axiosSecure = useAxiosSecure();
   const onSubmit = async (data) => {
     console.log("Visa Data:", data);
-   
+
     const imgFile = { image: data.imgFile[0] };
     const res = await axiosPublic.post(img_hosting_api, imgFile, {
       headers: {
@@ -63,7 +63,7 @@ const axiosSecure=useAxiosSecure()
         visaType: data.visaType,
       };
       // // send data to the server and database
-      fetch("http://localhost:5000/visas", {
+      fetch("https://assignment-12-server-beige-two.vercel.app/visas", {
         method: "POST",
         headers: {
           "content-type": "application/json",
@@ -80,12 +80,12 @@ const axiosSecure=useAxiosSecure()
           }
         });
       const addVisaRes = await axiosSecure.post("visas", visaData);
-      console.log(addVisaRes.data)
+      console.log(addVisaRes.data);
       if (addVisaRes.data.insertedId) {
         // show success popup
         toast.success("Visa added successfully!");
       }
-      reset()
+      reset();
     }
   };
 

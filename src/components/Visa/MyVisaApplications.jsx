@@ -16,14 +16,14 @@ const MyVisaApplications = () => {
   const axiosSecure = useAxiosSecure();
 
   useEffect(() => {
-    // fetch(`http://localhost:5000/applyvisa/${userEmail}`)
+    // fetch(`https://assignment-12-server-beige-two.vercel.app/applyvisa/${userEmail}`)
     //   .then((response) => response.json())
     //   .then((data) => {
     //     setVisas(data);
     //     console.log(data);
     //   })
     //   .catch((error) => console.error("Error fetching data:", error));
-    // axios.get(`http://localhost:5000/applyvisa/${userEmail}`, {
+    // axios.get(`https://assignment-12-server-beige-two.vercel.app/applyvisa/${userEmail}`, {
     //   withCredentials: true,
     // });
     axiosSecure.get(`applyvisa/${userEmail}`).then((res) => setVisas(res.data));
@@ -33,9 +33,12 @@ const MyVisaApplications = () => {
   const handleDelete = (_id) => {
     console.log(_id);
 
-    fetch(`http://localhost:5000/myVisaApplication/${_id}`, {
-      method: "DELETE",
-    })
+    fetch(
+      `https://assignment-12-server-beige-two.vercel.app/myVisaApplication/${_id}`,
+      {
+        method: "DELETE",
+      }
+    )
       .then((res) => res.json())
       .then((data) => {
         console.log(data);
@@ -52,7 +55,9 @@ const MyVisaApplications = () => {
   const handleSearch = async (e) => {
     e.preventDefault();
     try {
-      const response = await fetch(`http://localhost:5000/search?q=${query}`);
+      const response = await fetch(
+        `https://assignment-12-server-beige-two.vercel.app/search?q=${query}`
+      );
       const data = await response.json();
       setVisas(data);
     } catch (error) {

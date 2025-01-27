@@ -1,4 +1,3 @@
-
 // import React, { useContext } from "react";
 // import { useForm } from "react-hook-form";
 // import { useMutation, useQueryClient } from "@tanstack/react-query";
@@ -12,7 +11,7 @@
 // const AddStory = () => {
 //     const img_hosting_key = "ceb11657bc5ce481788b7ae73151fb92";
 //     const img_hosting_api = `https://api.imgbb.com/1/upload?key=${img_hosting_key}`;
-    
+
 //   const { user } = useContext(AuthContext);
 
 //   const { register, handleSubmit, reset } = useForm({
@@ -49,7 +48,7 @@
 //         images: data.images,
 //       };
 //       // // send data to the server and database
-//       fetch("http://localhost:5000/visas", {
+//       fetch("https://assignment-12-server-beige-two.vercel.app/visas", {
 //         method: "POST",
 //         headers: {
 //           "content-type": "application/json",
@@ -109,14 +108,12 @@
 
 // export default AddStory;
 
-
 // // import React from "react";
 // // import { useForm } from "react-hook-form";
 // // import { useMutation, useQueryClient } from "@tanstack/react-query";
 // // import axios from "axios";
 // // import { useNavigate } from "react-router-dom";
 // // import useAxiosPublic from "../components/hooks/useAxiosPublic";
-
 
 // // const AddStory = () => {
 // //     const axiosPublic=useAxiosPublic()
@@ -172,7 +169,6 @@
 
 // // export default AddStory;
 
-
 import React, { useContext } from "react";
 import { useForm } from "react-hook-form";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
@@ -188,7 +184,7 @@ const AddStory = () => {
   const img_hosting_api = `https://api.imgbb.com/1/upload?key=${img_hosting_key}`;
 
   const { user } = useContext(AuthContext);
-const navigate=useNavigate()
+  const navigate = useNavigate();
   const { register, handleSubmit, reset } = useForm({
     defaultValues: {
       title: "",
@@ -216,7 +212,7 @@ const navigate=useNavigate()
       },
     });
     console.log(res.data);
-    
+
     if (res.data.success) {
       const storyData = {
         title: data.title,
@@ -225,7 +221,7 @@ const navigate=useNavigate()
         email: user?.email,
       };
       // // send data to the server and database
-      fetch("http://localhost:5000/story", {
+      fetch("https://assignment-12-server-beige-two.vercel.app/story", {
         method: "POST",
         headers: {
           "content-type": "application/json",
@@ -237,8 +233,8 @@ const navigate=useNavigate()
           if (data.insertedId) {
             console.log(data);
             console.log(data.insertedId);
-              toast.success("story added");
-              navigate("/my-stories");
+            toast.success("story added");
+            navigate("/my-stories");
             reset();
           }
         });

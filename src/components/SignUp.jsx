@@ -32,7 +32,7 @@ const SignUp = () => {
           photoURL: user.photoURL,
         };
         axiosPublic.post("users", newUser).then((res) => {
-          console.log( res.data);
+          console.log(res.data);
           //  e.target.reset();
           navigate("/");
         });
@@ -75,7 +75,7 @@ const SignUp = () => {
           });
         })
         .catch((err) => console.log("error message: ", err));
-      // fetch("http://localhost:5000/users", {
+      // fetch("https://assignment-12-server-beige-two.vercel.app/users", {
       //   method: "POST",
       //   headers: {
       //     "content-type": "application/json",

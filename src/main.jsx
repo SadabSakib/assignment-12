@@ -71,7 +71,7 @@ import EditStory from "./Pages/EditStory .jsx";
 //       {
 //         path: "/all-visas",
 //         element: <AllVisas />,
-//         loader: () => fetch("http://localhost:5000/visas"),
+//         loader: () => fetch("https://assignment-12-server-beige-two.vercel.app/visas"),
 //       },
 //       {
 //         path: "/add-visa",
@@ -88,7 +88,7 @@ import EditStory from "./Pages/EditStory .jsx";
 //             <MyAddedVisas />
 //           </PrivateRoute>
 //         ),
-//         // loader: ({params}) => fetch("http://localhost:5000/coffee"),
+//         // loader: ({params}) => fetch("https://assignment-12-server-beige-two.vercel.app/coffee"),
 //       },
 //       {
 //         path: "/add-visas-by-admin-only",
@@ -122,7 +122,7 @@ import EditStory from "./Pages/EditStory .jsx";
 //           </PrivateRoute>
 //         ),
 //         loader: ({ params }) =>
-//           fetch(`http://localhost:5000/visa/${params.id}`),
+//           fetch(`https://assignment-12-server-beige-two.vercel.app/visa/${params.id}`),
 //       },
 //       {
 //         path: "/login",
@@ -139,7 +139,7 @@ import EditStory from "./Pages/EditStory .jsx";
 //       {
 //         path: "/users2",
 //         element: <Users2></Users2>,
-//         loader: () => fetch("/http://localhost:5000/users"),
+//         loader: () => fetch("/https://assignment-12-server-beige-two.vercel.app/users"),
 //       },
 //     ],
 //   },
@@ -248,40 +248,19 @@ const router = createBrowserRouter([
       </PrivateRoute>
     ),
     children: [
-      {
-        path: "tourist",
-        element: <TouristDashboard />,
-        children: [
-          { path: "profile", element: <TouristProfile /> },
-          { path: "bookings", element: <TouristBookings /> },
-          { path: "stories", element: <TouristStories /> },
-          { path: "join-guide", element: <JoinGuide /> },
-        ],
-      },
-      {
-        path: "tour-guide",
-        element: <TourGuideDashboard />,
-        children: [
-          { path: "profile", element: <TourGuideProfileDashboard /> },
-          { path: "tours", element: <GuideTours /> },
-          { path: "stories", element: <GuideStories /> },
-        ],
-      },
-      {
-        path: "admin",
-        element: (
-          <AdminRoute>
-            {" "}
-            <AdminDashboard />{" "}
-          </AdminRoute>
-        ),
-        children: [
-          { path: "profile", element: <AdminProfile /> },
-          { path: "packages", element: <AdminPackages /> },
-          { path: "users", element: <AdminUsers /> },
-          { path: "candidates", element: <AdminCandidates /> },
-        ],
-      },
+      { path: "profile", element: <TouristProfile /> },
+      { path: "bookings", element: <TouristBookings /> },
+      { path: "stories", element: <TouristStories /> },
+      { path: "join-guide", element: <JoinGuide /> },
+
+      { path: "profile", element: <TourGuideProfileDashboard /> },
+      { path: "tours", element: <GuideTours /> },
+      { path: "stories", element: <GuideStories /> },
+
+      { path: "profile", element: <AdminProfile /> },
+      { path: "packages", element: <AdminPackages /> },
+      { path: "users", element: <AdminUsers /> },
+      { path: "candidates", element: <AdminCandidates /> },
     ],
   },
 ]);
