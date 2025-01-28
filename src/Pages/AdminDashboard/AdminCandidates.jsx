@@ -11,8 +11,9 @@
 // export default AdminCandidates;
 import { useQuery } from "@tanstack/react-query";
 import React from "react";
-import useAxiosSecure from "../hooks/useAxiosSecure";
+// import useAxiosSecure from "../hooks/useAxiosSecure";
 import Swal from "sweetalert2";
+import useAxiosSecure from "../../components/hooks/useAxiosSecure";
 
 const AllUsers = () => {
   // const [user, setUsers] = useState([]);

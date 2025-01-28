@@ -13,42 +13,43 @@ const SignIn = () => {
     loading,
     creatUser,
     signInUser,
-    // handleGoogleSignIn,
+    handleGoogleSignIn,
     resetPass,
   } = useContext(AuthContext);
-  const navigate = useNavigate();
-  const axiosPublic = useAxiosPublic();
-  const provider = new GoogleAuthProvider();
+  // const navigate = useNavigate();
+  // const axiosPublic = useAxiosPublic();
+  // const provider = new GoogleAuthProvider();
   const handleGoogleSignin = () => {
-    signInWithPopup(auth, provider)
-      .then((res) => {
-        let user = res.user;
-        console.log(user);
-        setUser(user);
-        const creationTime = user?.metadata?.creationTime;
-        console.log(creationTime);
+    // signInWithPopup(auth, provider)
+    //   .then((res) => {
+    //     let user = res.user;
+    //     console.log(user);
+    //     setUser(user);
+    //     const creationTime = user?.metadata?.creationTime;
+    //     console.log(creationTime);
 
-        const newUser = {
-          displayName: user.displayName,
-          email: user.email,
-          creationTime,
-          photoURL: user.photoURL,
-        };
-        axiosPublic.post("users", newUser).then((res) => {
-          console.log(res.data);
-          //  e.target.reset();
-          navigate("/");
-        });
-        //  const email = { email: user?.email };
-        // axios.post("https://assignment-12-server-beige-two.vercel.app/jwt", email, {
-        //    withCredentials:true
-        //  }).then((data) => {
-        //    console.log(data);
-        //  });
-      })
-      .catch((err) => {
-        console.log(err);
-      });
+    //     const newUser = {
+    //       displayName: user.displayName,
+    //       email: user.email,
+    //       creationTime,
+    //       photoURL: user.photoURL,
+    //     };
+    //     axiosPublic.post("users", newUser).then((res) => {
+    //       console.log(res.data);
+    //       //  e.target.reset();
+    //       navigate("/");
+    //     });
+    //     //  const email = { email: user?.email };
+    //     // axios.post("https://assignment-12-server-beige-two.vercel.app/jwt", email, {
+    //     //    withCredentials:true
+    //     //  }).then((data) => {
+    //     //    console.log(data);
+    //     //  });
+    //   })
+    //   .catch((err) => {
+    //     console.log(err);
+    //   });
+    handleGoogleSignIn()
   };
   const handlSignIn = (e) => {
     e.preventDefault();

@@ -17,13 +17,15 @@ import { NavLink, Outlet, useLoaderData } from "react-router-dom";
 import useAdmin from "./hooks/useAdmin";
 import useAxiosSecure from "./hooks/useAxiosSecure";
 import { AuthContext } from "../provider/AuthProvider";
+import useAxiosPublic from "./hooks/useAxiosPublic";
 
 const Dashboard = () => {
   const { user } = useContext(AuthContext);
   const [visas, setVisas] = useState([]);
+  const axiosPublic=useAxiosPublic()
   const axiosSecure = useAxiosSecure();
   useEffect(() => {
-    axiosSecure
+    axiosPublic
       .get(`applyvisa/${user?.email}`)
       .then((res) => setVisas(res.data));
   }, [user?.email]);
@@ -34,20 +36,22 @@ const Dashboard = () => {
     <div className="flex">
       <div className="w-64 bg-orange-400">
         <ul className="menu p-4">
+       
+          {/* { path: "users", element: <AdminUsers /> }, */}
           {isAdmin ? (
             <>
               <li>
-                <NavLink to="/dashboard/adminHome">Manage profile</NavLink>
+                <NavLink to="/dashboard/manageProfile">Manage profile</NavLink>
               </li>
               <li>
-                <NavLink to="/dashboard/addItems">My Assigned Tours</NavLink>
+                <NavLink to="/dashboard/addpackages">Add packages</NavLink>
               </li>
               <li>
-                <NavLink to="/dashboard/manageItems">Add Stories</NavLink>
+                <NavLink to="/dashboard/candidates">ManagePackages</NavLink>
               </li>
-              <li>
+              {/* <li>
                 <NavLink to="/dashboard/bookings">Manage Stories</NavLink>
-              </li>
+              </li> */}
               {/* <li>
                 <NavLink to="/dashboard/users">
                   <FaUsers></FaUsers>

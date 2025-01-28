@@ -191,6 +191,7 @@ const router = createBrowserRouter([
       { path: "/package/:id", element: <PackageDetails /> },
       { path: "/tour-guide/:id", element: <TourGuideProfile /> },
       { path: "*", element: <NotFound /> },
+      { path: "/users", element: <AllUsers /> },
     ],
   },
   {
@@ -223,12 +224,13 @@ const router = createBrowserRouter([
   },
   {
     path: "/edit-story/:id",
-    element: (
-      <PrivateRoute>
-        {" "}
-        <EditStory />{" "}
-      </PrivateRoute>
-    ),
+    // element: (
+    //   <PrivateRoute>
+    //     {" "}
+    //     <EditStory />{" "}
+    //   </PrivateRoute>
+    // ),
+    element: <EditStory />,
   },
   {
     path: "/payment",
@@ -241,12 +243,13 @@ const router = createBrowserRouter([
   },
   {
     path: "/dashboard",
-    element: (
-      <PrivateRoute>
-        {" "}
-        <Dashboard />{" "}
-      </PrivateRoute>
-    ),
+    // element: (
+    //   <PrivateRoute>
+    //     {" "}
+    //     <Dashboard />{" "}
+    //   </PrivateRoute>
+    // ),
+    element: <Dashboard />,
     children: [
       { path: "profile", element: <TouristProfile /> },
       { path: "bookings", element: <TouristBookings /> },
@@ -255,11 +258,16 @@ const router = createBrowserRouter([
 
       { path: "profile", element: <TourGuideProfileDashboard /> },
       { path: "tours", element: <GuideTours /> },
-      { path: "stories", element: <GuideStories /> },
+      { path: "addStories", element: <AddStory /> },
+      { path: "manageStories", element: <ManageStories /> },
 
-      { path: "profile", element: <AdminProfile /> },
-      { path: "packages", element: <AdminPackages /> },
-      { path: "users", element: <AdminUsers /> },
+      // { path: "profile", element: <AdminProfile /> },
+      // { path: "packages", element: <AdminPackages /> },
+      // { path: "users", element: <AdminUsers /> },
+      // { path: "candidates", element: <AdminCandidates /> },
+
+      { path: "manageProfile", element: <AdminProfile /> },
+      { path: "addpackages", element: <AdminPackages /> },
       { path: "candidates", element: <AdminCandidates /> },
     ],
   },

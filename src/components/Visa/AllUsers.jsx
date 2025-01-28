@@ -2,21 +2,23 @@ import { useQuery } from "@tanstack/react-query";
 import React from "react";
 import useAxiosSecure from "../hooks/useAxiosSecure";
 import Swal from "sweetalert2";
+import useAxiosPublic from "../hooks/useAxiosPublic";
 
 const AllUsers = () => {
   // const [user, setUsers] = useState([]);
 
   const axiosSecure = useAxiosSecure();
+  const axiosPublic=useAxiosPublic()
   const { data: users = [], refetch } = useQuery({
     queryKey: ["users"],
     queryFn: async () => {
-      const res = await axiosSecure.get("users");
+      const res = await axiosPublic.get("users");
       return res.data;
     },
   });
   console.log(users);
   const handleMakeAdmin = (user) => {
-    axiosSecure.patch(`users/admin/${user._id}`).then(() => {
+    axiosPublic.patch(`users/admin/${user._id}`).then(() => {
       Swal.fire(`${user.displayName} is admin now`);
       refetch();
     });
@@ -44,7 +46,7 @@ const AllUsers = () => {
       confirmButtonText: "Yes, delete it!",
     }).then((result) => {
       if (result.isConfirmed) {
-        axiosSecure.delete(`users/${id}`).then((res) => {
+        axiosPublic.delete(`users/${id}`).then((res) => {
           if (res.data.deletedCount > 0) {
             refetch();
             Swal.fire({
