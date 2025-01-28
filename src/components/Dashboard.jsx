@@ -29,9 +29,11 @@ const Dashboard = () => {
       .get(`applyvisa/${user?.email}`)
       .then((res) => setVisas(res.data));
   }, [user?.email]);
-  console.log(visas?.length);
+  // console.log(visas?.length);
 
   let [isAdmin] = useAdmin();
+  console.log(isAdmin)
+  // let isAdmin=true
   return (
     <div className="flex">
       <div className="w-64 bg-orange-400">

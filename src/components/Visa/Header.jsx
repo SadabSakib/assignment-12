@@ -1,113 +1,3 @@
-// import React, { useContext } from "react";
-// import ThemeToggle from "./ThemeToggle";
-// import { NavLink } from "react-router-dom";
-// import { AuthContext } from "../../provider/AuthProvider";
-// import useAdmin from "../hooks/useAdmin";
-
-// const Header = () => {
-//   const {
-//     user,
-//     setUser,
-//     loading,
-//     creatUser,
-//     signInUser,
-//     handleGoogleSignIn,
-//     resetPass,
-//     handleSignOut,
-//   } = useContext(AuthContext);
-//   const [isAdmin] = useAdmin();
-
-//   // user?condition?'double true':'one true':'false'
-//   console.log(user);
-//   return (
-//     <div>
-//       <nav className="navbar bg-base-100">
-//         {" "}
-//         <div className="navbar-start">
-//           {" "}
-//           <a className="btn btn-ghost normal-case text-xl">
-//             Visa Navigator
-//           </a>{" "}
-//         </div>{" "}
-//         <div className="navbar-center hidden lg:flex">
-//           {" "}
-//           <ul className="menu menu-horizontal px-1">
-//             {" "}
-//             <li>
-//               {" "}
-//               <NavLink to="/" activeClassName="active">
-//                 Home
-//               </NavLink>{" "}
-//             </li>{" "}
-//             <li>
-//               {" "}
-//               <NavLink to="/all-visas" activeClassName="active">
-//                 All Visas
-//               </NavLink>{" "}
-//             </li>{" "}
-//             <li>
-//               {user ? (
-//                 isAdmin ? (
-//                   <NavLink to="/dashboard/adminHome">Dashboard</NavLink>
-//                 ) : (
-//                   <NavLink to="/dashboard/userHome">Dashboard</NavLink>
-//                 )
-//               ) : (
-//                 "false"
-//               )}
-//             </li>
-//             <li>
-//               {" "}
-//               <NavLink to="/add-visa" activeClassName="active">
-//                 Add Visa
-//               </NavLink>{" "}
-//             </li>{" "}
-//             <li>
-//               {" "}
-//               <NavLink to="/my-added-visas" activeClassName="active">
-//                 My Added Visas
-//               </NavLink>{" "}
-//             </li>{" "}
-//             <li>
-//               {" "}
-//               <NavLink to="/my-visa-applications" activeClassName="active">
-//                 My Visa Applications
-//               </NavLink>{" "}
-//             </li>{" "}
-//           </ul>{" "}
-//         </div>{" "}
-//         <div className=" flex justify-around">
-//           {" "}
-//           {user ? (
-//             <>
-//               <img
-//                 src={user?.photoURL}
-//                 className="rounded-full w-9 mx-3"
-//                 alt=""
-//               />
-//               <button
-//                 className="btn btn-secondary"
-//                 onClick={() => handleSignOut()}
-//               >
-//                 Logout
-//               </button>
-//             </>
-//           ) : (
-//             <NavLink to="/login" className="btn btn-success ">
-//               Login
-//             </NavLink>
-//           )}{" "}
-//           {/* <NavLink to="/register" className="btn">
-//               Register
-//             </NavLink>{" "} */}
-//           <ThemeToggle />
-//         </div>{" "}
-//       </nav>
-//     </div>
-//   );
-// };
-
-// export default Header;
 import React, { useContext } from "react";
 import { Link } from "react-router-dom";
 // import { AuthContext } from "../provider/AuthProvider";
@@ -127,7 +17,7 @@ const Navbar = () => {
       <div className="container mx-auto flex justify-between items-center">
         <div className="flex items-center">
           <img src={logo} alt="Logo" className="h-10 mr-2" />
-          <span className="text-xl font-bold">Website Name</span>
+          <span className="text-xl font-bold">Tourist Ninja</span>
         </div>
         <div className="flex items-center">
           <Link to="/" className="mr-4">
@@ -139,7 +29,7 @@ const Navbar = () => {
           <Link to="/about" className="mr-4">
             About Us
           </Link>
-          <Link to="/packages" className="mr-4">
+          <Link to="/AllTrips" className="mr-4">
             Trips
           </Link>
           {!user ? (
