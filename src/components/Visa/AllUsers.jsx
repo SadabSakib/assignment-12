@@ -121,7 +121,6 @@
 
 // export default AllUsers;
 
-
 // import React, { useContext, useState } from "react";
 // import { useQuery } from "@tanstack/react-query";
 // import Swal from "sweetalert2";
@@ -154,8 +153,6 @@
 //       return res.data;
 //     },
 //   });
-
- 
 
 //   const handleSearchChange = (e) => {
 //     setSearchTerm(e.target.value);
@@ -243,7 +240,11 @@ const AllUsers = () => {
   });
 
   // Query with automatic refetch on dependency changes
-  const { data: users = [], isLoading,refetch } = useQuery({
+  const {
+    data: users = [],
+    isLoading,
+    refetch,
+  } = useQuery({
     queryKey: ["users", searchTerm, selectedRole.value],
     queryFn: async () => {
       const params = {
@@ -253,7 +254,7 @@ const AllUsers = () => {
 
       console.log("Request params:", params); // Debugging
 
-      const res = await axiosPublic.get("users", { params })
+      const res = await axiosPublic.get("users", { params });
       console.log("Response data:", res?.data); // Debugging
       return res.data;
     },

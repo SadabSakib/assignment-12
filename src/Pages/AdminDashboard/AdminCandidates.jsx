@@ -20,7 +20,7 @@ const AdminCandidates = () => {
   // const [user, setUsers] = useState([]);
 
   const axiosSecure = useAxiosSecure();
-  const axiosPublic=useAxiosPublic()
+  const axiosPublic = useAxiosPublic();
   const { data: UsersToGuide = [], refetch } = useQuery({
     queryKey: ["JoingGuideCandidades"],
     queryFn: async () => {
@@ -72,8 +72,8 @@ const AdminCandidates = () => {
     });
   };
 
-    return (
-    //   need to fix the below code 
+  return (
+    //   need to fix the below code
     <div>
       total users {UsersToGuide.length}
       <table className="table-auto w-full border-collapse border border-gray-300">

@@ -49,7 +49,7 @@ const SignIn = () => {
     //   .catch((err) => {
     //     console.log(err);
     //   });
-    handleGoogleSignIn()
+    handleGoogleSignIn();
   };
   const handlSignIn = (e) => {
     e.preventDefault();

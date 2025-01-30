@@ -253,12 +253,14 @@ const router = createBrowserRouter([
     children: [
       { path: "profile", element: <TouristProfile /> },
       { path: "bookings", element: <TouristBookings /> },
-      { path: "stories", element: <TouristStories /> },
+      { path: "addStory", element: <AddStory /> },
+      { path: "stories", element: <ManageStories /> },
       { path: "join-guide", element: <JoinGuide /> },
 
       { path: "profile", element: <TourGuideProfileDashboard /> },
       { path: "tours", element: <GuideTours /> },
-      { path: "addStories", element: <AddStory /> },
+      { path: "addStory", element: <AddStory /> },
+      { path: "stories", element: <ManageStories /> },
       {
         path: "manageStories",
         element: (
