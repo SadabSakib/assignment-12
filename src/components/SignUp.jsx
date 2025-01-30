@@ -30,6 +30,7 @@ const SignUp = () => {
           email: user.email,
           creationTime,
           photoURL: user.photoURL,
+          role: "user",
         };
         axiosPublic.post("users", newUser).then((res) => {
           console.log(res.data);
@@ -61,6 +62,7 @@ const SignUp = () => {
         password,
         creationTime,
         photoURL: photo,
+        role: "user",
       };
       updateProfile(auth.currentUser, {
         displayName: name,

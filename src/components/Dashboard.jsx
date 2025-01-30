@@ -36,20 +36,24 @@ const Dashboard = () => {
   // let isAdmin=true
   return (
     <div className="flex">
-      <div className="w-64 bg-orange-400">
+      <div className="w-64 h-screend bg-orange-400">
         <ul className="menu p-4">
-       
           {/* { path: "users", element: <AdminUsers /> }, */}
           {isAdmin ? (
             <>
               <li>
-                <NavLink to="/dashboard/manageProfile">Manage profile</NavLink>
+                <NavLink defaultChecked to="/dashboard/manageProfile">
+                  Manage profile
+                </NavLink>
               </li>
               <li>
                 <NavLink to="/dashboard/addpackages">Add packages</NavLink>
               </li>
               <li>
-                <NavLink to="/dashboard/candidates">ManagePackages</NavLink>
+                <NavLink to="/dashboard/candidates">Manage Candidates</NavLink>
+              </li>
+              <li>
+                <NavLink to="/dashboard/manageUsers">All Users</NavLink>
               </li>
               {/* <li>
                 <NavLink to="/dashboard/bookings">Manage Stories</NavLink>
@@ -115,25 +119,6 @@ const Dashboard = () => {
             </>
           )}
           {/* shared nav links */}
-          <div className="divider"></div>
-          <li>
-            <NavLink to="/">
-              <FaHome></FaHome>
-              Home
-            </NavLink>
-          </li>
-          <li>
-            <NavLink to="/order/salad">
-              <FaSearch></FaSearch>
-              Menu
-            </NavLink>
-          </li>
-          <li>
-            <NavLink to="/order/contact">
-              <FaEnvelope></FaEnvelope>
-              Contact
-            </NavLink>
-          </li>
         </ul>
       </div>
       <div className="container mx-auto mt-10">

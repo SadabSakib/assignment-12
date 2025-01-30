@@ -14,19 +14,21 @@ import React from "react";
 // import useAxiosSecure from "../hooks/useAxiosSecure";
 import Swal from "sweetalert2";
 import useAxiosSecure from "../../components/hooks/useAxiosSecure";
+import useAxiosPublic from "../../components/hooks/useAxiosPublic";
 
-const AllUsers = () => {
+const AdminCandidates = () => {
   // const [user, setUsers] = useState([]);
 
   const axiosSecure = useAxiosSecure();
+  const axiosPublic=useAxiosPublic()
   const { data: UsersToGuide = [], refetch } = useQuery({
     queryKey: ["JoingGuideCandidades"],
     queryFn: async () => {
-      const res = await axiosSecure.get("reqToJoinGuide");
+      const res = await axiosPublic.get("reqsOfJoiningGuides");
       return res.data;
     },
   });
-  console.log(users);
+  console.log(UsersToGuide);
   const handleMakeTourGuide = (user) => {
     axiosSecure.patch(`users/tourGuide/${user.email}`).then(() => {
       Swal.fire(`${user.displayName} is TourGuide now`);
@@ -56,7 +58,7 @@ const AllUsers = () => {
       confirmButtonText: "Yes, delete it!",
     }).then((result) => {
       if (result.isConfirmed) {
-        axiosSecure.delete(`users/${id}`).then((res) => {
+        axiosPublic.delete(`users/${id}`).then((res) => {
           if (res.data.deletedCount > 0) {
             refetch();
             Swal.fire({
@@ -94,7 +96,7 @@ const AllUsers = () => {
                 {user?.title}
               </td>
               <td className="border border-gray-300 px-4 py-2">
-                {user.role === "tourGuide" ? (
+                {user?.role === "tourGuide" ? (
                   "tourGuide"
                 ) : (
                   <button onClick={() => handleMakeTourGuide(user)}>
@@ -105,10 +107,10 @@ const AllUsers = () => {
 
               <td className="border border-gray-300 px-4 py-2">{user.email}</td>
               <td className="border border-gray-300 px-4 py-2">
-                {user.creationTime}
+                {user?.creationTime}
               </td>
               <td className="border border-gray-300 px-4 py-2">
-                {user.lastSignInTime}
+                {user?.lastSignInTime}
               </td>
               <td className="border border-gray-300 px-4 py-2">
                 <button className="bg-purple-700 p-2 border rounded-lg m-2">
@@ -130,4 +132,4 @@ const AllUsers = () => {
   );
 };
 
-export default AllUsers;
+export default AdminCandidates;

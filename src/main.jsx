@@ -259,7 +259,15 @@ const router = createBrowserRouter([
       { path: "profile", element: <TourGuideProfileDashboard /> },
       { path: "tours", element: <GuideTours /> },
       { path: "addStories", element: <AddStory /> },
-      { path: "manageStories", element: <ManageStories /> },
+      {
+        path: "manageStories",
+        element: (
+          <PrivateRoute>
+            {" "}
+            <ManageStories />{" "}
+          </PrivateRoute>
+        ),
+      },
 
       // { path: "profile", element: <AdminProfile /> },
       // { path: "packages", element: <AdminPackages /> },
@@ -269,6 +277,7 @@ const router = createBrowserRouter([
       { path: "manageProfile", element: <AdminProfile /> },
       { path: "addpackages", element: <AdminPackages /> },
       { path: "candidates", element: <AdminCandidates /> },
+      { path: "manageUsers", element: <AllUsers /> },
     ],
   },
 ]);
