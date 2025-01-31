@@ -168,12 +168,12 @@ const AdminProfile = () => {
             >
               Edit
             </button>
-            <button
+            {/* <button
               onClick={() => navigate("/join-tour-guide")}
               className="btn btn-secondary"
             >
               Apply for Tour Guide
-            </button>
+            </button> */}
           </div>
         </div>
       </div>
